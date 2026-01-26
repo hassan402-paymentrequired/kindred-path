@@ -7,6 +7,7 @@ interface AppState {
   challenges: Challenge[];
   isOnboarded: boolean;
   activeTopic: string | null;
+  showLanding: boolean;
 }
 
 interface AppContextType extends AppState {
@@ -15,9 +16,10 @@ interface AppContextType extends AppState {
   setChallenges: (challenges: Challenge[]) => void;
   setIsOnboarded: (value: boolean) => void;
   setActiveTopic: (topic: string | null) => void;
+  setShowLanding: (value: boolean) => void;
   likePost: (postId: number) => void;
   supportPost: (postId: number) => void;
-  addPost: (content: string, topic: string) => void;
+  addPost: (content: string, topic: string, media?: string[]) => void;
   completeOnboarding: (topics: string[], goals: string[]) => void;
   checkInChallenge: (challengeId: number) => void;
 }
@@ -30,6 +32,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
   const [challenges, setChallenges] = useState<Challenge[]>(mockChallenges);
   const [isOnboarded, setIsOnboarded] = useState(false);
   const [activeTopic, setActiveTopic] = useState<string | null>(null);
+  const [showLanding, setShowLanding] = useState(true);
 
   const likePost = (postId: number) => {
     setPosts(prev => prev.map(post => {
@@ -57,7 +60,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
     }));
   };
 
-  const addPost = (content: string, topic: string) => {
+  const addPost = (content: string, topic: string, media?: string[]) => {
     if (!user) return;
     
     const newPost: Post = {
@@ -73,6 +76,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
       time: 'Just now',
       isLiked: false,
       isSupported: false,
+      media,
     };
     
     setPosts(prev => [newPost, ...prev]);
@@ -115,11 +119,13 @@ export function AppProvider({ children }: { children: ReactNode }) {
         challenges,
         isOnboarded,
         activeTopic,
+        showLanding,
         setUser,
         setPosts,
         setChallenges,
         setIsOnboarded,
         setActiveTopic,
+        setShowLanding,
         likePost,
         supportPost,
         addPost,
