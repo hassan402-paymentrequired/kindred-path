@@ -22,6 +22,7 @@ export interface Post {
   time: string;
   isLiked?: boolean;
   isSupported?: boolean;
+  media?: string[];
 }
 
 export interface Community {
@@ -133,6 +134,7 @@ export const mockPosts: Post[] = [
     time: '4h ago',
     isLiked: true,
     isSupported: true,
+    media: ['https://images.unsplash.com/photo-1552072092-7f9b8d63efcb?w=600&h=400&fit=crop'],
   },
   {
     id: 3,
@@ -175,6 +177,7 @@ export const mockPosts: Post[] = [
     time: '8h ago',
     isLiked: true,
     isSupported: false,
+    media: ['https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&h=400&fit=crop'],
   },
 ];
 
