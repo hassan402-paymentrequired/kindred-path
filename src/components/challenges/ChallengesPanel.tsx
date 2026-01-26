@@ -1,12 +1,30 @@
+import { useState } from 'react';
 import { useApp } from '@/contexts/AppContext';
 import { Button } from '@/components/ui/button';
 import { Flame, Check, Trophy, Users, ChevronRight } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { ConfettiCelebration } from '@/components/celebrations/ConfettiCelebration';
+
+const MILESTONES = [7, 30, 90];
 
 export function ChallengesPanel() {
   const { challenges, checkInChallenge, user } = useApp();
+  const [celebration, setCelebration] = useState<{ visible: boolean; milestone: number }>({
+    visible: false,
+    milestone: 0,
+  });
 
   if (!user) return null;
+
+  const handleCheckIn = (challengeId: number, currentStreak: number) => {
+    const newStreak = currentStreak + 1;
+    checkInChallenge(challengeId);
+
+    // Check if we hit a milestone
+    if (MILESTONES.includes(newStreak)) {
+      setCelebration({ visible: true, milestone: newStreak });
+    }
+  };
 
   return (
     <div className="p-4">
@@ -22,6 +40,7 @@ export function ChallengesPanel() {
         {challenges.map((challenge) => {
           const progress = (challenge.currentStreak / challenge.targetDays) * 100;
           const isCompleted = challenge.status === 'completed';
+          const nextMilestone = MILESTONES.find(m => m > challenge.currentStreak) || challenge.targetDays;
 
           return (
             <div
@@ -56,7 +75,7 @@ export function ChallengesPanel() {
                     {challenge.currentStreak}/{challenge.targetDays} days
                   </span>
                 </div>
-                <div className="h-2 bg-muted rounded-full overflow-hidden">
+                <div className="h-2 bg-muted rounded-full overflow-hidden relative">
                   <div
                     className={cn(
                       "h-full rounded-full transition-all duration-500",
@@ -64,7 +83,25 @@ export function ChallengesPanel() {
                     )}
                     style={{ width: `${Math.min(progress, 100)}%` }}
                   />
+                  {/* Milestone markers */}
+                  {MILESTONES.map((milestone) => (
+                    milestone <= challenge.targetDays && (
+                      <div
+                        key={milestone}
+                        className={cn(
+                          "absolute top-1/2 -translate-y-1/2 w-1 h-3 rounded-full",
+                          challenge.currentStreak >= milestone ? "bg-success" : "bg-muted-foreground/30"
+                        )}
+                        style={{ left: `${(milestone / challenge.targetDays) * 100}%` }}
+                      />
+                    )
+                  ))}
                 </div>
+                {!isCompleted && (
+                  <p className="text-xs text-muted-foreground mt-1">
+                    {nextMilestone - challenge.currentStreak} days until next milestone 🎯
+                  </p>
+                )}
               </div>
 
               {/* Streak & Action */}
@@ -84,7 +121,7 @@ export function ChallengesPanel() {
                   <Button
                     variant="glow"
                     size="sm"
-                    onClick={() => checkInChallenge(challenge.id)}
+                    onClick={() => handleCheckIn(challenge.id, challenge.currentStreak)}
                     className="gap-1"
                   >
                     <Check className="w-4 h-4" />
@@ -111,6 +148,13 @@ export function ChallengesPanel() {
           Consistency beats intensity. Small daily wins lead to big transformations.
         </p>
       </div>
+
+      {/* Confetti Celebration */}
+      <ConfettiCelebration
+        isVisible={celebration.visible}
+        milestone={celebration.milestone}
+        onComplete={() => setCelebration({ visible: false, milestone: 0 })}
+      />
     </div>
   );
 }

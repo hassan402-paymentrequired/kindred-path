@@ -55,6 +55,7 @@ export interface Comment {
   content: string;
   time: string;
   likes: number;
+  parentId?: number;
 }
 
 export const topics = [
@@ -293,6 +294,36 @@ export const mockComments: Comment[] = [
     content: "I've been there. The fact that you're here, being honest, shows incredible strength. We're rooting for you!",
     time: '1h ago',
     likes: 12,
+  },
+  {
+    id: 3,
+    postId: 2,
+    userId: 4,
+    username: 'GentleRiver',
+    avatar: '🌊',
+    content: "30 days is HUGE! 🎉 You're an inspiration to all of us!",
+    time: '3h ago',
+    likes: 24,
+  },
+  {
+    id: 4,
+    postId: 2,
+    userId: 6,
+    username: 'CalmForest',
+    avatar: '🌲',
+    content: "This gives me so much hope. If you can do it, so can I. Day 5 here!",
+    time: '3h ago',
+    likes: 18,
+  },
+  {
+    id: 5,
+    postId: 3,
+    userId: 2,
+    username: 'HopeSeeker12',
+    avatar: '🌟',
+    content: "You're not alone in this. Those racing thoughts are so hard. Have you tried the 5-4-3-2-1 grounding technique?",
+    time: '4h ago',
+    likes: 9,
   },
 ];
 
