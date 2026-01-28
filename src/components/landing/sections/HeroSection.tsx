@@ -85,13 +85,13 @@ export function HeroSection({ onGetStarted }: HeroSectionProps) {
             </p>
 
             <div ref={ctaRef} className="flex flex-wrap gap-4">
-              <Button onClick={onGetStarted} variant="glow" size="lg" className="group">
+              <Button onClick={onGetStarted} variant="glow" size="lg" className="group hover-shine">
                 Download app
-                <Download className="w-4 h-4 ml-2 group-hover:translate-y-0.5 transition-transform" />
+                <Download className="w-4 h-4 ml-2 group-hover:translate-y-1 group-hover:animate-bounce-soft transition-transform" />
               </Button>
-              <Button variant="outline" size="lg">
+              <Button variant="outline" size="lg" className="group hover-border-glow">
                 Access from web
-                <ArrowRight className="w-4 h-4 ml-2" />
+                <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
               </Button>
             </div>
           </div>
@@ -150,15 +150,15 @@ export function HeroSection({ onGetStarted }: HeroSectionProps) {
 
                     {/* Quick Actions */}
                     <div className="flex gap-2">
-                      <div className="flex-1 p-3 bg-success/20 rounded-xl text-center">
+                      <div className="flex-1 p-3 bg-success/20 rounded-xl text-center hover:bg-success/30 hover:scale-105 transition-all cursor-pointer">
                         <div className="text-2xl mb-1">🧘</div>
                         <div className="text-xs">Meditate</div>
                       </div>
-                      <div className="flex-1 p-3 bg-accent/20 rounded-xl text-center">
+                      <div className="flex-1 p-3 bg-accent/20 rounded-xl text-center hover:bg-accent/30 hover:scale-105 transition-all cursor-pointer">
                         <div className="text-2xl mb-1">📝</div>
                         <div className="text-xs">Journal</div>
                       </div>
-                      <div className="flex-1 p-3 bg-secondary/20 rounded-xl text-center">
+                      <div className="flex-1 p-3 bg-secondary/20 rounded-xl text-center hover:bg-secondary/30 hover:scale-105 transition-all cursor-pointer">
                         <div className="text-2xl mb-1">💪</div>
                         <div className="text-xs">Workout</div>
                       </div>
@@ -168,7 +168,7 @@ export function HeroSection({ onGetStarted }: HeroSectionProps) {
               </div>
 
               {/* Floating Cards */}
-              <div className="float-element absolute -top-4 -right-8 p-3 bg-card rounded-2xl border border-border shadow-elevated">
+              <div className="float-element absolute -top-4 -right-8 p-3 bg-card rounded-2xl border border-border shadow-elevated hover:scale-110 hover:border-success/50 transition-all cursor-pointer">
                 <div className="flex items-center gap-2">
                   <div className="w-8 h-8 bg-success/20 rounded-full flex items-center justify-center text-lg">🎯</div>
                   <div>
@@ -178,7 +178,7 @@ export function HeroSection({ onGetStarted }: HeroSectionProps) {
                 </div>
               </div>
 
-              <div className="float-element absolute -bottom-6 -left-12 p-3 bg-card rounded-2xl border border-border shadow-elevated">
+              <div className="float-element absolute -bottom-6 -left-12 p-3 bg-card rounded-2xl border border-border shadow-elevated hover:scale-110 hover:border-love/50 transition-all cursor-pointer">
                 <div className="flex items-center gap-2">
                   <div className="w-8 h-8 bg-love/20 rounded-full flex items-center justify-center text-lg">❤️</div>
                   <div>

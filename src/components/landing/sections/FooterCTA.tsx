@@ -17,15 +17,15 @@ export function FooterCTA() {
 
         {/* App Store Buttons */}
         <div className="flex flex-wrap justify-center gap-4">
-          <button className="flex items-center gap-3 px-6 py-4 bg-background text-foreground rounded-xl hover:opacity-90 transition-opacity shadow-elevated">
-            <Apple className="w-8 h-8" />
+          <button className="flex items-center gap-3 px-6 py-4 bg-background text-foreground rounded-xl hover:scale-105 hover:-translate-y-1 transition-all duration-200 shadow-elevated hover:shadow-2xl group">
+            <Apple className="w-8 h-8 group-hover:scale-110 transition-transform" />
             <div className="text-left">
               <div className="text-xs opacity-80">Download on the</div>
               <div className="text-lg font-semibold">App Store</div>
             </div>
           </button>
-          <button className="flex items-center gap-3 px-6 py-4 bg-background text-foreground rounded-xl hover:opacity-90 transition-opacity shadow-elevated">
-            <Smartphone className="w-8 h-8" />
+          <button className="flex items-center gap-3 px-6 py-4 bg-background text-foreground rounded-xl hover:scale-105 hover:-translate-y-1 transition-all duration-200 shadow-elevated hover:shadow-2xl group">
+            <Smartphone className="w-8 h-8 group-hover:scale-110 transition-transform" />
             <div className="text-left">
               <div className="text-xs opacity-80">Get it on</div>
               <div className="text-lg font-semibold">Google Play</div>
@@ -36,12 +36,12 @@ export function FooterCTA() {
         {/* Footer Links */}
         <div className="mt-12 pt-8 border-t border-primary-foreground/20">
           <div className="flex flex-wrap justify-center gap-6 text-sm text-primary-foreground/70">
-            <a href="#" className="hover:text-primary-foreground transition-colors">About us</a>
-            <a href="#" className="hover:text-primary-foreground transition-colors">FAQ</a>
-            <a href="#" className="hover:text-primary-foreground transition-colors">Security</a>
-            <a href="#" className="hover:text-primary-foreground transition-colors">Brand Assets</a>
-            <a href="#" className="hover:text-primary-foreground transition-colors">Terms of Use</a>
-            <a href="#" className="hover:text-primary-foreground transition-colors">Privacy Policy</a>
+            <a href="#" className="hover:text-primary-foreground transition-colors link-hover">About us</a>
+            <a href="#" className="hover:text-primary-foreground transition-colors link-hover">FAQ</a>
+            <a href="#" className="hover:text-primary-foreground transition-colors link-hover">Security</a>
+            <a href="#" className="hover:text-primary-foreground transition-colors link-hover">Brand Assets</a>
+            <a href="#" className="hover:text-primary-foreground transition-colors link-hover">Terms of Use</a>
+            <a href="#" className="hover:text-primary-foreground transition-colors link-hover">Privacy Policy</a>
           </div>
           <div className="mt-6 text-sm text-primary-foreground/50">
             © 2024 Bloom. All rights reserved.

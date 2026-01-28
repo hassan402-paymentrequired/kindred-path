@@ -19,15 +19,15 @@ export function HabitsSection() {
 
             {/* App Store Buttons */}
             <div className="flex flex-wrap gap-3">
-              <button className="flex items-center gap-3 px-5 py-3 bg-foreground text-background rounded-xl hover:opacity-90 transition-opacity">
-                <Apple className="w-6 h-6" />
+              <button className="flex items-center gap-3 px-5 py-3 bg-foreground text-background rounded-xl hover:opacity-90 hover:scale-105 hover:-translate-y-1 transition-all duration-200 hover-shine group">
+                <Apple className="w-6 h-6 group-hover:scale-110 transition-transform" />
                 <div className="text-left">
                   <div className="text-[10px] opacity-80">Download on the</div>
                   <div className="text-sm font-semibold">App Store</div>
                 </div>
               </button>
-              <button className="flex items-center gap-3 px-5 py-3 bg-foreground text-background rounded-xl hover:opacity-90 transition-opacity">
-                <Smartphone className="w-6 h-6" />
+              <button className="flex items-center gap-3 px-5 py-3 bg-foreground text-background rounded-xl hover:opacity-90 hover:scale-105 hover:-translate-y-1 transition-all duration-200 hover-shine group">
+                <Smartphone className="w-6 h-6 group-hover:scale-110 transition-transform" />
                 <div className="text-left">
                   <div className="text-[10px] opacity-80">Get it on</div>
                   <div className="text-sm font-semibold">Google Play</div>
@@ -39,7 +39,7 @@ export function HabitsSection() {
           {/* Right - Stats Cards */}
           <div className="relative">
             {/* Main Stats Card */}
-            <div className="float-element relative bg-card rounded-3xl p-6 border border-border shadow-elevated max-w-sm ml-auto">
+            <div className="float-element relative bg-card rounded-3xl p-6 border border-border shadow-elevated max-w-sm ml-auto card-hover-glow">
               <div className="flex justify-between items-start mb-6">
                 <div>
                   <div className="text-sm text-muted-foreground mb-1">Your Activities</div>
@@ -83,8 +83,8 @@ export function HabitsSection() {
                   ].map((item, i) => (
                     <div key={i} className="flex-1 flex flex-col items-center gap-1">
                       <div 
-                        className={`w-full rounded-t-lg transition-all ${item.active ? 'bg-success' : 'bg-muted'}`}
-                        style={{ height: `${item.value}%` }}
+                        className={`w-full rounded-t-lg transition-all duration-200 cursor-pointer hover:opacity-80 ${item.active ? 'bg-success hover:scale-y-110' : 'bg-muted'}`}
+                        style={{ height: `${item.value}%`, transformOrigin: 'bottom' }}
                       />
                     </div>
                   ))}
@@ -98,10 +98,10 @@ export function HabitsSection() {
             </div>
 
             {/* Secondary Card - Watch */}
-            <div className="float-element absolute -bottom-8 -left-4 bg-card rounded-2xl p-4 border border-border shadow-elevated">
+            <div className="float-element absolute -bottom-8 -left-4 bg-card rounded-2xl p-4 border border-border shadow-elevated hover:scale-110 hover:border-primary/50 transition-all cursor-pointer">
               {/* Placeholder for smartwatch image */}
-              <div className="w-32 h-32 bg-gradient-to-br from-accent/30 to-primary/30 rounded-2xl flex items-center justify-center">
-                <div className="text-4xl">⌚</div>
+              <div className="w-32 h-32 bg-gradient-to-br from-accent/30 to-primary/30 rounded-2xl flex items-center justify-center group">
+                <div className="text-4xl group-hover:scale-110 group-hover:rotate-12 transition-transform">⌚</div>
               </div>
               <div className="text-center mt-2">
                 <div className="text-xs text-muted-foreground">Synced with</div>
