@@ -144,6 +144,99 @@
   .btn-glow:hover::before {
     @apply opacity-100;
   }
+
+  /* Interactive Cards */
+  .card-hover {
+    @apply transition-all duration-300 ease-out;
+  }
+
+  .card-hover:hover {
+    @apply -translate-y-2;
+    box-shadow: 0 20px 40px hsl(0 0% 0% / 0.4), var(--shadow-glow-primary);
+  }
+
+  .card-hover-glow {
+    @apply transition-all duration-300 ease-out relative;
+  }
+
+  .card-hover-glow::before {
+    content: '';
+    @apply absolute inset-0 rounded-[inherit] opacity-0 transition-opacity duration-300 pointer-events-none;
+    background: linear-gradient(135deg, hsl(165 70% 45% / 0.1), hsl(275 60% 55% / 0.1));
+  }
+
+  .card-hover-glow:hover {
+    @apply -translate-y-1 scale-[1.02];
+    border-color: hsl(165 70% 45% / 0.5);
+  }
+
+  .card-hover-glow:hover::before {
+    @apply opacity-100;
+  }
+
+  /* Magnetic hover effect */
+  .hover-lift {
+    @apply transition-all duration-300 ease-out;
+  }
+
+  .hover-lift:hover {
+    @apply -translate-y-1;
+    box-shadow: 0 12px 24px hsl(0 0% 0% / 0.3);
+  }
+
+  /* Icon button hover */
+  .icon-hover {
+    @apply transition-all duration-200 ease-out;
+  }
+
+  .icon-hover:hover {
+    @apply scale-110;
+    filter: drop-shadow(0 0 8px hsl(165 70% 45% / 0.5));
+  }
+
+  /* Link hover underline */
+  .link-hover {
+    @apply relative;
+  }
+
+  .link-hover::after {
+    content: '';
+    @apply absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300;
+  }
+
+  .link-hover:hover::after {
+    @apply w-full;
+  }
+
+  /* Pulse on hover */
+  .hover-pulse:hover {
+    animation: pulse-hover 0.5s ease-out;
+  }
+
+  /* Shine effect */
+  .hover-shine {
+    @apply relative overflow-hidden;
+  }
+
+  .hover-shine::after {
+    content: '';
+    @apply absolute top-0 -left-full w-full h-full transition-all duration-500;
+    background: linear-gradient(90deg, transparent, hsl(0 0% 100% / 0.1), transparent);
+  }
+
+  .hover-shine:hover::after {
+    @apply left-full;
+  }
+
+  /* Border glow on hover */
+  .hover-border-glow {
+    @apply transition-all duration-300;
+  }
+
+  .hover-border-glow:hover {
+    border-color: hsl(165 70% 45% / 0.6);
+    box-shadow: 0 0 20px hsl(165 70% 45% / 0.2), inset 0 0 20px hsl(165 70% 45% / 0.05);
+  }
 }
 
 @layer utilities {
@@ -251,6 +344,16 @@
 @keyframes ripple {
   0% { transform: scale(0); opacity: 1; }
   100% { transform: scale(4); opacity: 0; }
+}
+
+@keyframes pulse-hover {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
 }
 
 /* Custom scrollbar */

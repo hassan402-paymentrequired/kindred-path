@@ -31,9 +31,9 @@ export function BalanceSection() {
             onChange={(e) => setEmail(e.target.value)}
             className="flex-1 h-12 bg-card border-border"
           />
-          <Button variant="glow" size="lg">
+          <Button variant="glow" size="lg" className="group hover-shine">
             Subscribe
-            <ArrowRight className="w-4 h-4 ml-2" />
+            <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
           </Button>
         </div>
 
@@ -51,9 +51,9 @@ export function BalanceSection() {
           </div>
 
           {/* Floating Activity Card */}
-          <div className="float-element absolute -left-8 top-1/4 bg-card rounded-2xl p-4 border border-border shadow-elevated">
+          <div className="float-element absolute -left-8 top-1/4 bg-card rounded-2xl p-4 border border-border shadow-elevated hover:scale-110 hover:border-primary/50 transition-all cursor-pointer group">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-primary/20 rounded-xl flex items-center justify-center">
+              <div className="w-10 h-10 bg-primary/20 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
                 <Droplets className="w-5 h-5 text-primary" />
               </div>
               <div>
@@ -64,9 +64,9 @@ export function BalanceSection() {
           </div>
 
           {/* Floating Session Card */}
-          <div className="float-element absolute -right-4 bottom-1/4 bg-card rounded-2xl p-4 border border-success/30 shadow-elevated">
+          <div className="float-element absolute -right-4 bottom-1/4 bg-card rounded-2xl p-4 border border-success/30 shadow-elevated hover:scale-110 hover:border-success/60 transition-all cursor-pointer group">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-success/20 rounded-xl flex items-center justify-center text-xl">
+              <div className="w-10 h-10 bg-success/20 rounded-xl flex items-center justify-center text-xl group-hover:scale-110 transition-transform">
                 🧘
               </div>
               <div>

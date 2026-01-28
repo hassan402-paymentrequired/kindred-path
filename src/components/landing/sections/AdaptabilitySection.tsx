@@ -29,12 +29,12 @@ export function AdaptabilitySection({ onGetStarted }: AdaptabilitySectionProps) 
             </p>
 
             <div className="flex flex-wrap gap-3">
-              <Button variant="glow" size="lg" onClick={onGetStarted}>
-                <Download className="w-4 h-4 mr-2" />
+              <Button variant="glow" size="lg" onClick={onGetStarted} className="group hover-shine">
+                <Download className="w-4 h-4 mr-2 group-hover:translate-y-1 transition-transform" />
                 Download app
               </Button>
-              <Button variant="outline" size="lg">
-                <Globe className="w-4 h-4 mr-2" />
+              <Button variant="outline" size="lg" className="group hover-border-glow">
+                <Globe className="w-4 h-4 mr-2 group-hover:rotate-12 transition-transform" />
                 Access from web
               </Button>
             </div>
@@ -54,9 +54,9 @@ export function AdaptabilitySection({ onGetStarted }: AdaptabilitySectionProps) 
             </div>
 
             {/* Floating Cards */}
-            <div className="float-element absolute -top-6 -right-6 bg-card rounded-2xl p-4 border border-border shadow-elevated">
+            <div className="float-element absolute -top-6 -right-6 bg-card rounded-2xl p-4 border border-border shadow-elevated hover:scale-110 hover:border-success/50 transition-all cursor-pointer group">
               <div className="flex items-center gap-3">
-                <div className="w-12 h-12 bg-gradient-to-br from-success to-primary rounded-xl flex items-center justify-center text-2xl">
+                <div className="w-12 h-12 bg-gradient-to-br from-success to-primary rounded-xl flex items-center justify-center text-2xl group-hover:scale-110 transition-transform">
                   📈
                 </div>
                 <div>
@@ -66,10 +66,14 @@ export function AdaptabilitySection({ onGetStarted }: AdaptabilitySectionProps) 
               </div>
             </div>
 
-            <div className="float-element absolute -bottom-4 -left-4 bg-card rounded-2xl p-3 border border-border shadow-elevated">
+            <div className="float-element absolute -bottom-4 -left-4 bg-card rounded-2xl p-3 border border-border shadow-elevated hover:border-primary/50 transition-all">
               <div className="flex gap-2">
                 {['😊', '😌', '🤗', '💪'].map((emoji, i) => (
-                  <div key={i} className="w-10 h-10 bg-muted rounded-lg flex items-center justify-center text-xl">
+                  <div 
+                    key={i} 
+                    className="w-10 h-10 bg-muted rounded-lg flex items-center justify-center text-xl hover:scale-125 hover:bg-primary/20 transition-all cursor-pointer"
+                    style={{ transitionDelay: `${i * 50}ms` }}
+                  >
                     {emoji}
                   </div>
                 ))}

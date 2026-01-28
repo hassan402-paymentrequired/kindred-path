@@ -11,12 +11,12 @@ export function NeuroscienceSection({ onGetStarted }: NeuroscienceSectionProps) 
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left - Video/Image Placeholder */}
-          <div className="relative">
-            <div className="relative bg-gradient-to-br from-primary/20 via-secondary/20 to-accent/20 rounded-3xl aspect-video flex items-center justify-center overflow-hidden border border-border">
+          <div className="relative group">
+            <div className="relative bg-gradient-to-br from-primary/20 via-secondary/20 to-accent/20 rounded-3xl aspect-video flex items-center justify-center overflow-hidden border border-border group-hover:border-primary/50 transition-all">
               {/* Play Button Overlay */}
-              <button className="absolute inset-0 flex items-center justify-center group">
-                <div className="w-20 h-20 bg-foreground/90 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform shadow-elevated">
-                  <Play className="w-8 h-8 text-background ml-1" />
+              <button className="absolute inset-0 flex items-center justify-center">
+                <div className="w-20 h-20 bg-foreground/90 rounded-full flex items-center justify-center group-hover:scale-125 group-hover:bg-primary transition-all duration-300 shadow-elevated">
+                  <Play className="w-8 h-8 text-background ml-1 group-hover:text-primary-foreground" />
                 </div>
               </button>
               
@@ -32,9 +32,9 @@ export function NeuroscienceSection({ onGetStarted }: NeuroscienceSectionProps) 
             </div>
 
             {/* Floating Stat */}
-            <div className="float-element absolute -bottom-6 -right-6 bg-card rounded-2xl p-4 border border-border shadow-elevated">
+            <div className="float-element absolute -bottom-6 -right-6 bg-card rounded-2xl p-4 border border-border shadow-elevated hover:scale-110 hover:border-success/50 transition-all cursor-pointer group/stat">
               <div className="flex items-center gap-3">
-                <div className="w-12 h-12 bg-success/20 rounded-xl flex items-center justify-center text-2xl">
+                <div className="w-12 h-12 bg-success/20 rounded-xl flex items-center justify-center text-2xl group-hover/stat:scale-110 transition-transform">
                   🎯
                 </div>
                 <div>
@@ -57,9 +57,9 @@ export function NeuroscienceSection({ onGetStarted }: NeuroscienceSectionProps) 
             </p>
 
             <div className="flex flex-wrap gap-3">
-              <Button variant="outline" size="lg" onClick={onGetStarted}>
+              <Button variant="outline" size="lg" onClick={onGetStarted} className="group hover-border-glow">
                 How it works
-                <ArrowRight className="w-4 h-4 ml-2" />
+                <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
               </Button>
             </div>
 
