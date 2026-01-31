@@ -1,18 +1,58 @@
 import { useApp } from '@/contexts/AppContext';
 import { mockCommunities } from '@/data/mockData';
 import { cn } from '@/lib/utils';
-import { Users, TrendingUp, Flame, Trophy, Settings } from 'lucide-react';
+import { Users, TrendingUp, Flame, Trophy, Settings, Home, Bell, User, Award } from 'lucide-react';
+import { useNavigate, useLocation } from 'react-router-dom';
+
+const mainNavItems = [
+  { id: 'feed', path: '/app/feed', label: 'Home', icon: Home },
+  { id: 'communities', path: '/app/communities', label: 'Communities', icon: Users },
+  { id: 'challenges', path: '/app/challenges', label: 'Challenges', icon: Flame },
+  { id: 'leaderboard', path: '/app/leaderboard', label: 'Leaderboard', icon: Award },
+  { id: 'notifications', path: '/app/notifications', label: 'Alerts', icon: Bell },
+  { id: 'profile', path: '/app/profile', label: 'Profile', icon: User },
+];
 
 export function Sidebar() {
   const { user, challenges, activeTopic, setActiveTopic } = useApp();
+  const navigate = useNavigate();
+  const location = useLocation();
 
   if (!user) return null;
 
   const topCommunities = mockCommunities.slice(0, 5);
   const activeChallenge = challenges.find(c => c.status === 'active');
 
+  const handleCommunityClick = (slug: string | null) => {
+    setActiveTopic(slug);
+    navigate('/app/feed');
+  };
+
   return (
     <aside className="hidden lg:flex flex-col w-80 h-screen sticky top-0 border-r border-border bg-sidebar p-4 overflow-y-auto">
+      {/* Main navigation - same as mobile bottom nav */}
+      <nav className="space-y-1 mb-4">
+        {mainNavItems.map((item) => {
+          const isActive = location.pathname === item.path || (item.id === 'feed' && (location.pathname === '/app' || location.pathname === '/app/feed'));
+          const Icon = item.icon;
+          return (
+            <button
+              key={item.id}
+              onClick={() => navigate(item.path)}
+              className={cn(
+                "w-full flex items-center gap-3 px-3 py-2.5 rounded-xl transition-colors text-left",
+                isActive
+                  ? "bg-primary/10 text-primary"
+                  : "text-muted-foreground hover:bg-muted hover:text-foreground"
+              )}
+            >
+              <Icon className="w-5 h-5 shrink-0" />
+              <span className="font-medium">{item.label}</span>
+            </button>
+          );
+        })}
+      </nav>
+
       {/* User Profile Summary */}
       <div className="p-4 rounded-2xl bg-card border border-border mb-4">
         <div className="flex items-center gap-3 mb-4">
@@ -104,45 +144,6 @@ export function Sidebar() {
         </div>
       )}
 
-      {/* Communities */}
-      <div className="flex-1">
-        <h4 className="font-semibold text-sm text-muted-foreground mb-3 flex items-center gap-2">
-          <Users className="w-4 h-4" />
-          Communities
-        </h4>
-        <nav className="space-y-1">
-          <button
-            onClick={() => setActiveTopic(null)}
-            className={cn(
-              "w-full flex items-center gap-3 px-3 py-2 rounded-xl transition-colors text-left",
-              activeTopic === null
-                ? "bg-primary/10 text-primary"
-                : "text-muted-foreground hover:bg-muted hover:text-foreground"
-            )}
-          >
-            <span className="text-lg">🏠</span>
-            <span className="font-medium">Home Feed</span>
-          </button>
-          {topCommunities.map((community) => (
-            <button
-              key={community.id}
-              onClick={() => setActiveTopic(community.slug)}
-              className={cn(
-                "w-full flex items-center gap-3 px-3 py-2 rounded-xl transition-colors text-left",
-                activeTopic === community.slug
-                  ? "bg-primary/10 text-primary"
-                  : "text-muted-foreground hover:bg-muted hover:text-foreground"
-              )}
-            >
-              <span className="text-lg">{community.icon}</span>
-              <div className="flex-1 min-w-0">
-                <span className="font-medium block truncate">{community.name}</span>
-                <span className="text-xs text-muted-foreground">{community.members.toLocaleString()} members</span>
-              </div>
-            </button>
-          ))}
-        </nav>
-      </div>
 
       {/* Settings */}
       <button className="flex items-center gap-3 px-3 py-2 rounded-xl text-muted-foreground hover:bg-muted hover:text-foreground transition-colors mt-4">

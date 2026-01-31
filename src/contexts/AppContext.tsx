@@ -1,5 +1,8 @@
 import React, { createContext, useContext, useState, ReactNode } from 'react';
-import { User, Post, Challenge, mockUser, mockPosts, mockChallenges, generateUsername, generateAvatar } from '@/data/mockData';
+import type { User } from '@/features/auth/types';
+import type { Post } from '@/features/feed/types';
+import type { Challenge } from '@/features/challenges/types';
+import { mockPosts, mockChallenges, generateUsername, generateAvatar, allChallenges } from '@/data/mockData';
 
 interface AppState {
   user: User | null;
@@ -22,6 +25,7 @@ interface AppContextType extends AppState {
   addPost: (content: string, topic: string, media?: string[]) => void;
   completeOnboarding: (topics: string[], goals: string[]) => void;
   checkInChallenge: (challengeId: number) => void;
+  joinChallenge: (challengeId: number) => void;
 }
 
 const AppContext = createContext<AppContextType | undefined>(undefined);
@@ -111,6 +115,22 @@ export function AppProvider({ children }: { children: ReactNode }) {
     }));
   };
 
+  const joinChallenge = (challengeId: number) => {
+    // Import the challenge from allChallenges if not already in user's challenges
+    setChallenges(prev => {
+      const alreadyJoined = prev.some(c => c.id === challengeId);
+      if (alreadyJoined) return prev;
+      
+      // Find challenge from allChallenges
+      const challengeToJoin = allChallenges.find((c: Challenge) => c.id === challengeId);
+      
+      if (!challengeToJoin) return prev;
+      
+      // Add as active with 0 streak
+      return [...prev, { ...challengeToJoin, currentStreak: 0, status: 'active' as const }];
+    });
+  };
+
   return (
     <AppContext.Provider
       value={{
@@ -131,6 +151,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
         addPost,
         completeOnboarding,
         checkInChallenge,
+        joinChallenge,
       }}
     >
       {children}

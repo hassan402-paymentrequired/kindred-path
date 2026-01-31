@@ -15,6 +15,9 @@ export default {
     extend: {
       fontFamily: {
         nunito: ['Nunito', 'sans-serif'],
+        bungee: ['Bungee', 'cursive'],
+        lilita: ['Lilita One', 'cursive'],
+        titan: ['Titan One', 'cursive'],
       },
       colors: {
         border: "hsl(var(--border))",

@@ -1,0 +1,1 @@
+export { ChallengeDetail } from './ChallengeDetail';

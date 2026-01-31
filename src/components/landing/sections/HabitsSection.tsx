@@ -18,7 +18,7 @@ export function HabitsSection() {
             </p>
 
             {/* App Store Buttons */}
-            <div className="flex flex-wrap gap-3">
+            {/* <div className="flex flex-wrap gap-3">
               <button className="flex items-center gap-3 px-5 py-3 bg-foreground text-background rounded-xl hover:opacity-90 transition-opacity">
                 <Apple className="w-6 h-6" />
                 <div className="text-left">
@@ -33,7 +33,7 @@ export function HabitsSection() {
                   <div className="text-sm font-semibold">Google Play</div>
                 </div>
               </button>
-            </div>
+            </div> */}
           </div>
 
           {/* Right - Stats Cards */}

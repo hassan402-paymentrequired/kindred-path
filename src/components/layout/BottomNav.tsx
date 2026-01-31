@@ -1,31 +1,31 @@
-import { Home, Users, Flame, Bell, User } from 'lucide-react';
+import { Home, Users, Flame, Bell, User, Award } from 'lucide-react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { cn } from '@/lib/utils';
 
-interface BottomNavProps {
-  activeTab: string;
-  onTabChange: (tab: string) => void;
-}
+export function BottomNav() {
+  const navigate = useNavigate();
+  const location = useLocation();
 
-export function BottomNav({ activeTab, onTabChange }: BottomNavProps) {
   const tabs = [
-    { id: 'feed', label: 'Home', icon: Home },
-    { id: 'communities', label: 'Communities', icon: Users },
-    { id: 'challenges', label: 'Challenges', icon: Flame },
-    { id: 'notifications', label: 'Alerts', icon: Bell },
-    { id: 'profile', label: 'Profile', icon: User },
+    { id: 'feed', label: 'Home', icon: Home, path: '/app/feed' },
+    { id: 'communities', label: 'Communities', icon: Users, path: '/app/communities' },
+    { id: 'challenges', label: 'Challenges', icon: Flame, path: '/app/challenges' },
+    { id: 'leaderboard', label: 'Rank', icon: Award, path: '/app/leaderboard' },
+    { id: 'notifications', label: 'Alerts', icon: Bell, path: '/app/notifications' },
+    { id: 'profile', label: 'Profile', icon: User, path: '/app/profile' },
   ];
 
   return (
     <nav className="fixed bottom-0 left-0 right-0 z-40 bg-background/90 backdrop-blur-xl border-t border-border lg:hidden">
       <div className="flex items-center justify-around h-16">
         {tabs.map((tab) => {
-          const isActive = activeTab === tab.id;
+          const isActive = location.pathname === tab.path || (tab.id === 'feed' && location.pathname === '/app');
           const Icon = tab.icon;
 
           return (
             <button
               key={tab.id}
-              onClick={() => onTabChange(tab.id)}
+              onClick={() => navigate(tab.path)}
               className={cn(
                 "flex flex-col items-center justify-center gap-1 py-2 px-3 rounded-xl transition-all",
                 isActive

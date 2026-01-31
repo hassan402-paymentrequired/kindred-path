@@ -1,73 +1,90 @@
-# Welcome to your Lovable project
+ <div className="relative">
+              {/* Phone Frame */}
+              <div className="relative w-72 h-[580px] bg-card rounded-[3rem] border-4 border-muted shadow-elevated overflow-hidden">
+                {/* Phone Screen - Placeholder */}
+                <div className="absolute inset-2 rounded-[2.5rem] bg-gradient-to-b from-muted to-card overflow-hidden">
+                  {/* Status Bar */}
+                  <div className="flex justify-between items-center px-6 py-3 text-xs text-muted-foreground">
+                    <span>9:41</span>
+                    <div className="flex gap-1">
+                      <div className="w-4 h-2 bg-muted-foreground/50 rounded-sm" />
+                      <div className="w-4 h-2 bg-muted-foreground/50 rounded-sm" />
+                      <div className="w-6 h-3 bg-success rounded-sm" />
+                    </div>
+                  </div>
+                  
+                  {/* App Content Placeholder */}
+                  <div className="p-4 space-y-4">
+                    <div className="text-lg font-semibold text-foreground">Howdy, Fellow! 👋</div>
+                    
+                    {/* Stats Cards */}
+                    <div className="grid grid-cols-2 gap-2">
+                      <div className="p-3 bg-primary/20 rounded-2xl">
+                        <div className="text-2xl font-bold text-primary">86%</div>
+                        <div className="text-xs text-muted-foreground">Mood Score</div>
+                      </div>
+                      <div className="p-3 bg-success/20 rounded-2xl">
+                        <div className="text-2xl font-bold text-success">12</div>
+                        <div className="text-xs text-muted-foreground">Day Streak</div>
+                      </div>
+                    </div>
 
-## Project info
+                    {/* Activity Graph Placeholder */}
+                    <div className="p-4 bg-muted/50 rounded-2xl">
+                      <div className="text-sm font-medium mb-3">Weekly Activity</div>
+                      <div className="flex items-end gap-2 h-20">
+                        {[40, 60, 30, 80, 50, 90, 70].map((h, i) => (
+                          <div 
+                            key={i} 
+                            className="flex-1 bg-primary/60 rounded-t-lg transition-all hover:bg-primary"
+                            style={{ height: `${h}%` }}
+                          />
+                        ))}
+                      </div>
+                      <div className="flex justify-between mt-2 text-xs text-muted-foreground">
+                        {['M', 'T', 'W', 'T', 'F', 'S', 'S'].map((d, i) => (
+                          <span key={i}>{d}</span>
+                        ))}
+                      </div>
+                    </div>
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+                    {/* Quick Actions */}
+                    <div className="flex gap-2">
+                      <div className="flex-1 p-3 bg-success/20 rounded-xl text-center">
+                        <div className="text-2xl mb-1">🧘</div>
+                        <div className="text-xs">Meditate</div>
+                      </div>
+                      <div className="flex-1 p-3 bg-accent/20 rounded-xl text-center">
+                        <div className="text-2xl mb-1">📝</div>
+                        <div className="text-xs">Journal</div>
+                      </div>
+                      <div className="flex-1 p-3 bg-secondary/20 rounded-xl text-center">
+                        <div className="text-2xl mb-1">💪</div>
+                        <div className="text-xs">Workout</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
 
-## How can I edit this code?
+              {/* Floating Cards */}
+              <div className="float-element absolute -top-4 -right-8 p-3 bg-card rounded-2xl border border-border shadow-elevated">
+                <div className="flex items-center gap-2">
+                  <div className="w-8 h-8 bg-success/20 rounded-full flex items-center justify-center text-lg">🎯</div>
+                  <div>
+                    <div className="text-sm font-semibold">Goals Met</div>
+                    <div className="text-xs text-muted-foreground">5/5 today</div>
+                  </div>
+                </div>
+              </div>
 
-There are several ways of editing your application.
-
-**Use Lovable**
-
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
-
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
-
-**Edit a file directly in GitHub**
-
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
-
-**Use GitHub Codespaces**
-
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
-
-## What technologies are used for this project?
-
-This project is built with:
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+              <div className="float-element absolute -bottom-6 -left-12 p-3 bg-card rounded-2xl border border-border shadow-elevated">
+                <div className="flex items-center gap-2">
+                  <div className="w-8 h-8 bg-love/20 rounded-full flex items-center justify-center text-lg">❤️</div>
+                  <div>
+                    <div className="text-sm font-semibold text-love">+23%</div>
+                    <div className="text-xs text-muted-foreground">Happiness</div>
+                  </div>
+                </div>
+              </div>
+            </div>

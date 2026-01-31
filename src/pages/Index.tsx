@@ -1,29 +1,19 @@
+import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useApp } from '@/contexts/AppContext';
-import { AppProvider } from '@/contexts/AppContext';
-import { LandingPage } from '@/components/landing/LandingPage';
-import { OnboardingFlow } from '@/components/onboarding/OnboardingFlow';
-import { MainFeed } from '@/components/feed/MainFeed';
-
-function AppContent() {
-  const { isOnboarded, showLanding, setShowLanding } = useApp();
-
-  if (showLanding) {
-    return <LandingPage onGetStarted={() => setShowLanding(false)} />;
-  }
-
-  if (!isOnboarded) {
-    return <OnboardingFlow />;
-  }
-
-  return <MainFeed />;
-}
+import { LandingPage } from '@/features/landing/components';
 
 const Index = () => {
-  return (
-    <AppProvider>
-      <AppContent />
-    </AppProvider>
-  );
+  const { isOnboarded } = useApp();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (isOnboarded) {
+      navigate('/app/feed');
+    }
+  }, [isOnboarded, navigate]);
+
+  return <LandingPage onGetStarted={() => navigate('/signup')} />;
 };
 
 export default Index;

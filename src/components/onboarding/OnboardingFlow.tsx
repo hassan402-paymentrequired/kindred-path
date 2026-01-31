@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { OnboardingWelcome } from './OnboardingWelcome';
 import { OnboardingTopics } from './OnboardingTopics';
 import { OnboardingGoals } from './OnboardingGoals';
@@ -10,6 +11,7 @@ export function OnboardingFlow() {
   const [selectedTopics, setSelectedTopics] = useState<string[]>([]);
   const [selectedGoals, setSelectedGoals] = useState<string[]>([]);
   const { completeOnboarding, setUser } = useApp();
+  const navigate = useNavigate();
 
   const handleTopicsNext = (topics: string[]) => {
     setSelectedTopics(topics);
@@ -34,6 +36,8 @@ export function OnboardingFlow() {
     };
     setUser(newUser);
     completeOnboarding(selectedTopics, selectedGoals);
+    // Redirect to app after onboarding
+    navigate('/app/feed');
   };
 
   // Progress indicator
