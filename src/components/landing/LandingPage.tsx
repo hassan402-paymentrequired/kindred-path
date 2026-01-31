@@ -1,14 +1,21 @@
 import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { HeroSection } from './sections/HeroSection';
+import { StatsSection } from './sections/StatsSection';
+import { HowItWorksSection } from './sections/HowItWorksSection';
+import { WhyAnonymousSection } from './sections/WhyAnonymousSection';
 import { HabitsSection } from './sections/HabitsSection';
 import { FeaturesGrid } from './sections/FeaturesGrid';
 import { BalanceSection } from './sections/BalanceSection';
 import { AdaptabilitySection } from './sections/AdaptabilitySection';
 import { TestimonialsSection } from './sections/TestimonialsSection';
 import { NeuroscienceSection } from './sections/NeuroscienceSection';
+import { FAQSection } from './sections/FAQSection';
 import { FooterCTA } from './sections/FooterCTA';
 import { LandingNav } from './sections/LandingNav';
+
+gsap.registerPlugin(ScrollTrigger);
 
 interface LandingPageProps {
   onGetStarted: () => void;
@@ -63,6 +70,15 @@ export function LandingPage({ onGetStarted }: LandingPageProps) {
       {/* Hero Section */}
       <HeroSection onGetStarted={onGetStarted} />
 
+      {/* Stats Section */}
+      <StatsSection />
+
+      {/* How It Works */}
+      <HowItWorksSection onGetStarted={onGetStarted} />
+
+      {/* Why Anonymous */}
+      <WhyAnonymousSection />
+
       {/* Build Good Habits Section */}
       <HabitsSection />
 
@@ -80,6 +96,9 @@ export function LandingPage({ onGetStarted }: LandingPageProps) {
 
       {/* Neuroscience Section */}
       <NeuroscienceSection onGetStarted={onGetStarted} />
+
+      {/* FAQ Section */}
+      <FAQSection />
 
       {/* Footer CTA */}
       <FooterCTA />

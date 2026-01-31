@@ -72,32 +72,58 @@ export function HeroSection({ onGetStarted }: HeroSectionProps) {
         <div className="grid lg:grid-cols-2 gap-6 items-center min-h-[calc(100vh-6rem)]">
           {/* Left Content */}
           <div className="space-y-8">
-            <h1 ref={titleRef} className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
-              <span className="text-foreground">The neuroscience</span>
+            <h1 ref={titleRef} className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight">
+              <span className="text-foreground">Recovery</span>
               <br />
-              <span className="text-foreground">of </span>
-              <span className="gradient-text-primary">happiness</span>
-              <br />
-              <span className="text-foreground">in your pocket.</span>
+              <span className="text-foreground">starts with </span>
+              <span className="gradient-text-primary">honesty</span>
+              <span className="text-foreground">.</span>
             </h1>
 
-            <p ref={subtitleRef} className="text-lg text-muted-foreground max-w-md">
-              Track your activity and get insights on how it works for your happiness. Reduce stress and make your life happier with Bloom.
+            <p ref={subtitleRef} className="text-xl text-muted-foreground max-w-lg leading-relaxed">
+              A safe, anonymous community for people overcoming addiction, building better habits, and finding support without judgment.
             </p>
 
             <div ref={ctaRef} className="flex flex-wrap gap-4">
               <Link to="/signup">
-                <Button variant="glow" size="lg" className="group">
-                  Get Started Free
-                  <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                <Button variant="glow" size="xl" className="group text-lg px-8 py-6">
+                  Start Your Journey Free
+                  <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
                 </Button>
               </Link>
               <Link to="/login">
-                <Button variant="outline" size="lg">
+                <Button variant="outline" size="xl" className="text-lg px-8 py-6">
                   Sign In
                 </Button>
               </Link>
+            </div>
 
+            {/* Trust Badges */}
+            <div className="flex flex-wrap gap-6 items-center pt-4 text-sm text-muted-foreground">
+              <div className="flex items-center gap-2">
+                <div className="w-5 h-5 rounded-full bg-success/20 flex items-center justify-center">
+                  <svg className="w-3 h-3 text-success" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                  </svg>
+                </div>
+                <span>100% Anonymous</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <div className="w-5 h-5 rounded-full bg-success/20 flex items-center justify-center">
+                  <svg className="w-3 h-3 text-success" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                  </svg>
+                </div>
+                <span>No Credit Card</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <div className="w-5 h-5 rounded-full bg-success/20 flex items-center justify-center">
+                  <svg className="w-3 h-3 text-success" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                  </svg>
+                </div>
+                <span>Free Forever</span>
+              </div>
             </div>
           </div>
 
