@@ -32,10 +32,10 @@ export function TestimonialsSection() {
             {testimonials.map((item, i) => (
               <div 
                 key={i} 
-                className="float-element flex items-start gap-3 p-4 bg-card rounded-2xl border border-border shadow-card"
+                className="float-element flex items-start gap-3 p-4 bg-card rounded-2xl border border-border shadow-card card-hover-glow cursor-pointer"
                 style={{ animationDelay: `${i * 0.2}s` }}
               >
-                <div className={`w-12 h-12 bg-${item.color}/20 rounded-full flex items-center justify-center text-2xl flex-shrink-0`}>
+                <div className={`w-12 h-12 bg-${item.color}/20 rounded-full flex items-center justify-center text-2xl flex-shrink-0 group-hover:scale-110 transition-transform`}>
                   {item.avatar}
                 </div>
                 <div className="flex-1 min-w-0">
@@ -61,22 +61,22 @@ export function TestimonialsSection() {
             </p>
 
             {/* Brain Illustration Placeholder */}
-            <div className="relative inline-block">
-              <div className="w-48 h-48 bg-gradient-to-br from-secondary/30 via-primary/20 to-accent/30 rounded-full flex items-center justify-center">
-                <div className="text-7xl">🧠</div>
+            <div className="relative inline-block group cursor-pointer">
+              <div className="w-48 h-48 bg-gradient-to-br from-secondary/30 via-primary/20 to-accent/30 rounded-full flex items-center justify-center group-hover:scale-105 transition-transform">
+                <div className="text-7xl group-hover:scale-110 transition-transform">🧠</div>
               </div>
               
               {/* Floating Labels */}
-              <div className="absolute -top-2 -right-4 px-3 py-1 bg-primary rounded-full text-xs font-medium text-primary-foreground">
+              <div className="absolute -top-2 -right-4 px-3 py-1 bg-primary rounded-full text-xs font-medium text-primary-foreground hover:scale-110 transition-transform cursor-pointer">
                 Dopamine
               </div>
-              <div className="absolute top-1/2 -right-8 px-3 py-1 bg-success rounded-full text-xs font-medium text-success-foreground">
+              <div className="absolute top-1/2 -right-8 px-3 py-1 bg-success rounded-full text-xs font-medium text-success-foreground hover:scale-110 transition-transform cursor-pointer">
                 Serotonin
               </div>
-              <div className="absolute -bottom-2 right-0 px-3 py-1 bg-love rounded-full text-xs font-medium text-white">
+              <div className="absolute -bottom-2 right-0 px-3 py-1 bg-love rounded-full text-xs font-medium text-white hover:scale-110 transition-transform cursor-pointer">
                 Oxytocin
               </div>
-              <div className="absolute top-1/3 -left-8 px-3 py-1 bg-accent rounded-full text-xs font-medium text-accent-foreground">
+              <div className="absolute top-1/3 -left-8 px-3 py-1 bg-accent rounded-full text-xs font-medium text-accent-foreground hover:scale-110 transition-transform cursor-pointer">
                 Endorphins
               </div>
             </div>
